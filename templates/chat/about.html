@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Chatting Chat</h1>
+  <p class="deck">
+    SungHwan and JJongHyuk's chatting room
+  </p>
+  <p>
+    <td colspan=2>
+          <input id="chat_name" type="text" placeholder="chat name">
+          <a class="button button-primary" href="{% url 'new_room'  %}">Create new chat room</a>
+    </td>
+  </p>
+  <p class="quiet">
+    Or, you can visit <code>{{ request.scheme }}://{{ request.get_host }}/any-path-you-want</code> 
+    to create a arbitrary room or join one whose name you know.
+  </p>
+  <form id="chatform">
+    <table id="chat">
+      <tbody>
+        {% for room in room_list %}
+          <tr>
+            <td><a href="{%  url 'chat_room' label=room.label %}">{{ room.label }}</a> </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </form>
+<script>
+
+</script>
+
+{% endblock content %}
