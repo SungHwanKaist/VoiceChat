@@ -9,6 +9,11 @@ class Room(models.Model):
     label = models.SlugField(unique=True)
     number = models.IntegerField()
 
+    STATUS_CODES = (("Initialize", "Initializing"), ("Active", "Active"),
+                    ("Waiting", "Waiting"),
+                    ("Terminated", "Terminated"))
+    chat_status = models.CharField(max_length=10, choices=STATUS_CODES, default="Initialize")
+
     def __unicode__(self):
         return self.label
 
